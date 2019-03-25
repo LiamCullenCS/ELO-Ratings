@@ -71,7 +71,10 @@ points_diff <- dat$homescore - dat$awayscore
 	}
 
 View(rankings)
-dotchart(rankings$rating, labels = row.names(rankings$team), 
+
+sortRankings <- rankings[order(rankings$rating),]
+
+dotchart(sortRankings$rating, labels = sortRankings$team, 
 		cex=.7, main="End of Season ELO Rating", xlab = "Rating")
 
 for (i in 1:256){
@@ -85,5 +88,4 @@ for (i in 1:256){
 	else if(points_diff[i] == 0){
 			cat(dat$home[i], "and", dat$away[i], "drew.", "\n")
 	}
-	
 }
