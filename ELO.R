@@ -13,40 +13,77 @@ team <- nflteams$abbr[nflteams$abbr != 'SD'
 rankings <- data.frame(team, rating, wins, losses, ties)
 
 dat <- data.frame(season_games(2018, sleep.seconds = 0))
-
-#get first 16 games (week 1)
-week_1 <-dat[1:16,]
-View(week_1)
 	
 #increment function
 inc <- function(x) {eval.parent(substitute(x <- x + 1))}
 
-points_diff <- week_1$homescore - week_1$awayscore
+points_diff <- dat$homescore - dat$awayscore
 
-	for (i in 1:16){
-
+	for (i in 1:256){
+     
 		if (points_diff[i] > 0){
-			cat(week_1$home[i], "beat", week_1$away[i], "\n")
-			inc(rankings$wins[rankings$team == week_1$home[i]])
-			inc(rankings$losses[rankings$team == week_1$away[i]])
+
+			inc(rankings$wins[rankings$team == dat$home[i]])
+			inc(rankings$losses[rankings$team == dat$away[i]])
+			
+			lossRating <- rankings$rating[rankings$team == dat$away[i]]
+			WWins <- rankings$wins[rankings$team == dat$home[i]]
+			WLosses <- rankings$losses[rankings$team == dat$home[i]]
+			overallWinRat <- rankings$rating[rankings$team == dat$home[i]] 
+			win_newRat <- ((lossRating + overallWinRat) + (400 * (WWins - WLosses)))/ (WWins + WLosses)
+
+			winRating <- rankings$rating[rankings$team == dat$home[i]]
+			LWins <- rankings$wins[rankings$team == dat$away[i]]
+			LLosses <- rankings$losses[rankings$team == dat$away[i]]
+			overallLossRat <- rankings$rating[rankings$team == dat$away[i]] 
+			loss_newRat <- ((winRating + overallLossRat) + (400 * (LWins - LLosses))) / (LWins + LLosses)
+		
+			rankings$rating[rankings$team == dat$home[i]] <- win_newRat
+			rankings$rating[rankings$team == dat$away[i]] <- loss_newRat
 		}
 
 		else if(points_diff[i] < 0){
-			cat(week_1$away[i], "beat", week_1$home[i], "\n")
-			inc(rankings$wins[rankings$team == week_1$away[i]])
-			inc(rankings$losses[rankings$team == week_1$home[i]])
-	
-		}
-		else if(points_diff[i] == 0){
-			cat(week_1$home[i], "and", week_1$away[i], "drew.", "\n")
-			inc(rankings$ties[rankings$team == week_1$home[i]])
-			inc(rankings$ties[rankings$team == week_1$away[i]])
 
+			inc(rankings$wins[rankings$team == dat$away[i]])
+			inc(rankings$losses[rankings$team == dat$home[i]])
+
+			lossRating <- rankings$rating[rankings$team == dat$home[i]]
+			WWins <- rankings$wins[rankings$team == dat$away[i]]
+			WLosses <- rankings$losses[rankings$team == dat$away[i]]
+			overallWinRat <- rankings$rating[rankings$team == dat$away[i]]
+			win_newRat <- ((lossRating + overallWinRat) + (400 * (WWins - WLosses)))/ (WWins + WLosses)
+
+			winRating <- rankings$rating[rankings$team == dat$away[i]]
+			LWins <- rankings$wins[rankings$team == dat$home[i]]
+			LLosses <- rankings$losses[rankings$team == dat$home[i]]
+			overallLossRat <- rankings$rating[rankings$team == dat$home[i]]
+			loss_newRat <- ((winRating + overallLossRat) + (400 * (LWins - LLosses))) / (LWins + LLosses)
+
+			rankings$rating[rankings$team == dat$away[i]] <- win_newRat
+			rankings$rating[rankings$team == dat$home[i]] <- loss_newRat
+		}
+
+		else if(points_diff[i] == 0){
+
+			inc(rankings$ties[rankings$team == dat$home[i]])
+			inc(rankings$ties[rankings$team == dat$away[i]])
 		}
 	}
 
 View(rankings)
+dotchart(rankings$rating, labels = row.names(rankings$team), 
+		cex=.7, main="End of Season ELO Rating", xlab = "Rating")
 
+for (i in 1:256){
 
-
-
+	if (points_diff[i] > 0){
+			cat(dat$home[i], "beat", dat$away[i], "\n")
+	}
+	else if(points_diff[i] < 0){
+			cat(dat$away[i], "beat", dat$home[i], "\n")
+	}
+	else if(points_diff[i] == 0){
+			cat(dat$home[i], "and", dat$away[i], "drew.", "\n")
+	}
+	
+}
