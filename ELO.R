@@ -74,8 +74,8 @@ View(rankings)
 
 sortRankings <- rankings[order(rankings$rating),]
 
-dotchart(sortRankings$rating, labels = sortRankings$team, 
-		cex=.7, main="End of Season ELO Rating", xlab = "Rating")
+dotchart(sortRankings$rating, labels = sortRankings$team,
+	main="End of Season ELO Rating", xlab = "Rating", cex=.7, pch = 19, col = viridis(32))
 
 for (i in 1:256){
 
