@@ -13,3 +13,6 @@ Next I'm going to compare the play distributions of every team and examine corre
 
 Here's an example of play distribution using the Seahawks
 ![HawksPlayDist](https://user-images.githubusercontent.com/29874915/55415848-b2b86e80-5565-11e9-912b-d41d4171d8d0.PNG)
+
+Stripped back play distribution vs league average
+![HawksVsLeagueAverage](https://user-images.githubusercontent.com/29874915/55424842-05e7ec80-5579-11e9-9b15-14776a2d71dc.PNG)
