@@ -15,4 +15,4 @@ Here's an example of play distribution using the Seahawks
 ![HawksPlayDist](https://user-images.githubusercontent.com/29874915/55415848-b2b86e80-5565-11e9-912b-d41d4171d8d0.PNG)
 
 Stripped back play distribution vs league average
-![HawksVsLeagueAverage](https://user-images.githubusercontent.com/29874915/55424842-05e7ec80-5579-11e9-9b15-14776a2d71dc.PNG)
+![HawksVsLeagueAverage](https://user-images.githubusercontent.com/29874915/55424991-55c6b380-5579-11e9-8662-72052a79b6b3.PNG)
