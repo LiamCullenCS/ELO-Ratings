@@ -18,3 +18,12 @@ seaDF <- as.data.frame(format(table(seaDat)))
 
 plot(factor(seaDat), main = "Hawks Play Distribution 2018")
 
+allDat <- new_dat$PlayType[new_dat$PlayType == 'Pass'
+	& new_dat$PlayType == 'Run'
+	& new_dat$PlayType != 'Sack']
+
+
+par(mfrow = c(2,1))
+pie(table(seaDat), main = "Seahawks Play Distribution")
+
+pie(table(allDat), main = "League Average Play Distribution")
