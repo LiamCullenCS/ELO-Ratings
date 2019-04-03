@@ -14,5 +14,12 @@ Next I'm going to compare the play distributions of every team and examine corre
 Here's an example of play distribution using the Seahawks
 ![HawksPlayDist](https://user-images.githubusercontent.com/29874915/55415848-b2b86e80-5565-11e9-912b-d41d4171d8d0.PNG)
 
-Stripped back play distribution vs league average
+Using the nflscrapR season_play_by_play function, we can get a breakdown of every play of the season.
+
+I'm most interested in observing how the split of pass and run plays affects ELO ratings, if at all.
+First, I removed all the extra play types which doesn't provide extra insight into coaching playcalling tendencies, such as QB kneel, Spike, etc. 
+
+I included Sacks in the breakdown as it paints a more accurate picture of total pass plays called per season.  
 ![HawksVsLeagueAverage](https://user-images.githubusercontent.com/29874915/55424991-55c6b380-5579-11e9-8662-72052a79b6b3.PNG)
+
+As you can see above, the Seahawks passed at a rate significantly below league average, yet still gave up an above average number of sacks. 
