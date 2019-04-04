@@ -19,9 +19,7 @@ Using the nflscrapR season_play_by_play function, we can get a breakdown of ever
 I'm most interested in observing how the split of pass and run plays affects ELO ratings, if at all.
 First, I removed all the extra play types which doesn't provide extra insight into coaching playcalling tendencies, such as QB kneel, Spike, etc. 
 
-I included Sacks in the breakdown as it paints a more accurate picture of total pass plays called per season.  
-
-
-![HawksVsLeagueAverage](https://user-images.githubusercontent.com/29874915/55424991-55c6b380-5579-11e9-8662-72052a79b6b3.PNG)
+I included Sacks in the breakdown as it paints a more accurate picture of total pass plays called per season. 
+![HawksVsLeagueAverage](https://user-images.githubusercontent.com/29874915/55491341-3b4e1200-562d-11e9-964c-2b4a9ed92c20.PNG)
 
 As you can see above, the Seahawks passed at a rate significantly below league average, yet still gave up an above average number of sacks. 
