@@ -89,3 +89,5 @@ for (i in 1:256){
 			cat(dat$home[i], "and", dat$away[i], "drew.", "\n")
 	}
 }
+
+write.csv(rankings, "ELO Rankings.csv")
