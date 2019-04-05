@@ -19,7 +19,7 @@ allDat <- new_dat$PlayType[new_dat$PlayType != 'Spike'
 	& new_dat$PlayType != 'Half End']
 
 leagueAvgs <- table(allDat)
-leaguePercents <- round(100*B/sum(leagueAvgs), 2)
+leaguePercents <- round(100*leagueAvgs/sum(leagueAvgs), 2)
 leagueBreakdown <- paste(leaguePercents, "%", sep = "")
 pie(table(allDat), labels = c(leagueBreakdown, table(allDat)), main = "League Average Play Distribution", col = wes_palette("Zissou1"))
 legend("topright", names(table(allDat)), cex = 0.8, fill = wes_palette("Zissou1"))
