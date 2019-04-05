@@ -17,3 +17,6 @@ abline(h=mean(y), col = "green")
 axis(side=1, at=x, labels=x, cex.axis=0.5)
 for(i in 1:32){lines(c(i,i), c(mean(y), y[i]), col="red")}
 
+#Can use this or built in function 'var'
+variance <- function(x) sum((x - mean(x)) ^2) / (length(x) -1)
+
